@@ -11,6 +11,8 @@ import java.io.IOException;
  *  @author Thanh Le
  *  @twitter: @lenguyenthanh
  *  Alternative for AsyncTask
+ *  Change from NetworkTask of Mr Josh
+ *  http://www.therealjoshua.com/2012/09/android-architecture-structuring-network-calls/
  * */
 
  abstract public class NetworkTask<Params, Progress, Result> extends

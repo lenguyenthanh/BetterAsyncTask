@@ -1,7 +1,7 @@
 BetterAsyncTask
 ================
 
-An easy, light weight android network library
+ *An easy, light weight android network library
 
 ## Why use BetterAsyncTask
 

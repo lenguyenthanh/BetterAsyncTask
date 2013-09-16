@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  *  @author Thanh Le
  *  @twitter: @lenguyenthanh
- *  Alternative for Asynctask
+ *  Alternative for AsyncTask
  * */
 
  abstract public class NetworkTask<Params, Progress, Result> extends
@@ -18,14 +18,6 @@ import java.io.IOException;
 
 	public static interface OnCompleteListener<Result> {
 		public void onComplete(Result result);
-	}
-
-	public static interface OnParserExceptionListener {
-		public void onParserException(ParserException parserException);
-	}
-
-	public static interface OnIOExceptionListener {
-		public void onIOException(IOException exception);
 	}
 
 	public static interface OnExceptionListener {
@@ -59,11 +51,11 @@ import java.io.IOException;
 		this.completeListener = completeListener;
 	}
 
-	private OnExceptionListener exceptionListener;
-
-	public void setOnExceptionListener(OnExceptionListener l) {
-		this.exceptionListener = l;
-	}
+//	private OnExceptionListener exceptionListener;
+//
+//	public void setOnExceptionListener(OnExceptionListener l) {
+//		this.exceptionListener = l;
+//	}
 
 	private OnExceptionListener genericExceptionListener;
 
@@ -73,21 +65,21 @@ import java.io.IOException;
 	 * 
 	 * @param l
 	 */
-	public void setOnGenericExceptionListener(OnExceptionListener l) {
+	public void setOnExceptionListener(OnExceptionListener l) {
 		this.genericExceptionListener = l;
 	}
 
-	private OnIOExceptionListener ioExceptionListener;
-
-	public void setOnIOExceptionListener(OnIOExceptionListener l) {
-		this.ioExceptionListener = l;
-	}
-
-	private OnParserExceptionListener parserExceptionListener;
-
-	public void setOnParserExceptionListener(OnParserExceptionListener l) {
-		this.parserExceptionListener = l;
-	}
+//	private OnIOExceptionListener ioExceptionListener;
+//
+//	public void setOnIOExceptionListener(OnIOExceptionListener l) {
+//		this.ioExceptionListener = l;
+//	}
+//
+//	private OnParserExceptionListener parserExceptionListener;
+//
+//	public void setOnParserExceptionListener(OnParserExceptionListener l) {
+//		this.parserExceptionListener = l;
+//	}
 
 	private OnNetworkUnavailableListener networkUnavailableListener;
 
@@ -200,20 +192,14 @@ import java.io.IOException;
 
 		if (parserException != null) {
 			onPostFault(parserException);
-			if (parserExceptionListener != null)
-				parserExceptionListener.onParserException(parserException);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(parserException);
 		} else if (ioException != null) {
 			onPostFault(ioException);
-			if (ioExceptionListener != null)
-				ioExceptionListener.onIOException(ioException);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(ioException);
 		} else if (exception != null) {
 			onPostFault(exception);
-			if (exceptionListener != null)
-				exceptionListener.onException(exception);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(exception);
 		}

@@ -9,11 +9,12 @@ BetterAsyncTask
  * Flexibility
  * Very effective with json
  * Intergarate with Jackson library
+ * Suitable with small and quick project
 
 
 ## Getting Started
 
- * Using BetterAsyncTask as Android library or build BetterAsyncTask to get jar file
+ * Using BetterAsyncTask as a project library or build BetterAsyncTask to get jar file
  * In your manifest file add the permissions, INTERNET,  ACCESS_NETWORK_STATE
 
 ## License

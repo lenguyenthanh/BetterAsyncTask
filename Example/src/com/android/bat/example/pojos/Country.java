@@ -1,5 +1,7 @@
 package com.android.bat.example.pojos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Copyright (c) 2013 Thanh Le
  * Created by Thanh Le

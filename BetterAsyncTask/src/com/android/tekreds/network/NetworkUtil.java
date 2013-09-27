@@ -24,10 +24,10 @@ public class NetworkUtil{
 			// getSystemService return null
 			return false;
 		} else {
-			NetworkInfo[] info = connectivity.getAllNetworkInfo();
-			if (info != null) {
-				for (int i = 0; i < info.length; i++) {
-					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+			NetworkInfo[] infos = connectivity.getAllNetworkInfo();
+			if (infos != null) {
+				for (NetworkInfo info : infos) {
+					if (info.getState() == NetworkInfo.State.CONNECTED) {
 						return true;
 					}
 				}

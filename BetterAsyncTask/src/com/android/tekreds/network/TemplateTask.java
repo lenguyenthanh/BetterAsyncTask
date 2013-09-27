@@ -4,9 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 import com.android.tekreds.network.commands.ICommand;
-import com.android.tekreds.network.exception.ParserException;
-
-import java.io.IOException;
 
 /**
  * Template for all network task
@@ -35,8 +32,7 @@ public class TemplateTask<T> extends NetworkTask<Void, Void, T>{
     }
 
     @Override
-    protected T loadDataFromNetwork() throws IOException, ParserException,
-            Exception{
+    protected T loadDataFromNetwork() throws Exception{
         if(command == null){
             Log.e(TAG, "Command null");
             throw new Exception("Command null exception.");

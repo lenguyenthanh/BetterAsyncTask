@@ -9,11 +9,6 @@ package com.android.tekreds.network.exception;
 
 public class ServerException extends Exception {
 
-	/**
-	 * 
-	 */
-	public static final long serialVersionUID = -5383493215450085894L;
-
 	public ServerException() {
 		super();
 	}

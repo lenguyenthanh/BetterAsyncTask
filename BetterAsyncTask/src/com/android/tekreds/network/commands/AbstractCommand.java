@@ -3,13 +3,12 @@ package com.android.tekreds.network.commands;
 import android.util.Log;
 import com.android.tekreds.network.http.IHttpRequest;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
  *  @author Thanh Le
  *  @twitter: @lenguyenthanh
- *  Template for all Command
+ *  Template for all Commands
  * */
 
  public abstract class AbstractCommand<T> implements ICommand<T> {
@@ -31,7 +30,7 @@ import java.io.InputStream;
 	 * 
 	 * */
 	@Override
-	public T execute(String url) throws IOException, Exception {
+	public T execute(String url) throws Exception {
 			Log.i(TAG, "execute " + url);
 
 		InputStream in = request.requestStream(url);

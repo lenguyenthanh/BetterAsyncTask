@@ -37,12 +37,19 @@ import java.util.Set;
     // base interface for http request (HttpGet, HttpPost)
 	protected HttpRequestBase request;
 	protected HttpClient client;
-	
+
 	// status of current request
 	private boolean canceled = false;
 
+    public boolean isCanceled(){
+        return canceled;
+    }
 
-	// Set header for the request
+    public void setCanceled(final boolean aCanceled){
+        canceled = aCanceled;
+    }
+
+    // Set header for the request
     private void setHeaders() {
         if(!mHeaders.isEmpty()) {
             Set<String> keys = mHeaders.keySet();
@@ -80,8 +87,7 @@ import java.util.Set;
 	 * @return InputStream
 	 * */
 	@Override
-	public InputStream requestStream(String url) throws IOException, Exception,
-            ServerException, ClientProtocolException, TimeoutException{
+	public InputStream requestStream(String url) throws Exception{
 
 			Log.i(TAG, "sendMessage: " + url);
 
@@ -108,7 +114,7 @@ import java.util.Set;
 
 				throw new ServerException(
 						"Request respond status line is null.");
-			} else if (!HttpUtils.isOkStatus(response.getStatusLine().getStatusCode())) {
+			} else if (HttpUtils.isOkCode(response.getStatusLine().getStatusCode())) {
 				// Usually cause by client
 
 					Log.e(TAG, "Request respond code is not OK: " + url + " "

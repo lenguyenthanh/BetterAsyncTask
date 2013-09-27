@@ -10,12 +10,8 @@ import org.apache.http.conn.HttpHostConnectException;
 
  public class ExceptionUtil {
 	public static boolean isServerException(Exception exception) {
-		if (exception instanceof ConnectTimeoutException
-				|| exception instanceof HttpHostConnectException) {
-			return true;
-		} else {
-			return false;
-		}
+		return exception instanceof ConnectTimeoutException
+				|| exception instanceof HttpHostConnectException;
 	}
 	
 }

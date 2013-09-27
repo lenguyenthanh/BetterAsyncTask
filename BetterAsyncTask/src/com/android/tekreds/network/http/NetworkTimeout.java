@@ -11,6 +11,7 @@ import org.apache.http.params.HttpParams;
  * */
 
  public class NetworkTimeout {
+    // default time
 	private static int TIME0UT_CONNECTION = 6000;
 	private static int TIME0UT_SOCKET = 15000;
 

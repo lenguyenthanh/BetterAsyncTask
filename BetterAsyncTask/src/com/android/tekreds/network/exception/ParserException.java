@@ -7,11 +7,6 @@ package com.android.tekreds.network.exception;
  * */
 public class ParserException extends Exception {
 
-	/**
-	 * 
-	 */
-	public static final long serialVersionUID = -2927868580802388742L;
-
 	public ParserException() {
 		super();
 	}

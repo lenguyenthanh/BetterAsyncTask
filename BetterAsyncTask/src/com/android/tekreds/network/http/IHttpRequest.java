@@ -1,6 +1,5 @@
 package com.android.tekreds.network.http;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -16,7 +15,7 @@ public interface IHttpRequest {
      * @throws java.io.IOException
      * @throws Exception
      * */
-    public InputStream requestStream(String url) throws IOException, Exception;
+    public InputStream requestStream(String url) throws Exception;
 
     /**
      * Set request header

@@ -31,6 +31,6 @@ import java.io.InputStream;
 	 * @throws ParserException
 	 * @throws Exception 
 	 * */
-	public T execute(String url) throws IOException, ParserException, Exception;
+	public T execute(String url) throws Exception;
 
 }

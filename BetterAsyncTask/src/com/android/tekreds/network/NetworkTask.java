@@ -16,6 +16,7 @@ import java.io.IOException;
  abstract public class NetworkTask<Params, Progress, Result> extends
 		AsyncTask<Params, Progress, Result>{
 
+
 	public static interface OnCompleteListener<Result> {
 		public void onComplete(Result result);
 	}
@@ -51,12 +52,6 @@ import java.io.IOException;
 		this.completeListener = completeListener;
 	}
 
-//	private OnExceptionListener exceptionListener;
-//
-//	public void setOnExceptionListener(OnExceptionListener l) {
-//		this.exceptionListener = l;
-//	}
-
 	private OnExceptionListener genericExceptionListener;
 
 	/**
@@ -68,18 +63,6 @@ import java.io.IOException;
 	public void setOnExceptionListener(OnExceptionListener l) {
 		this.genericExceptionListener = l;
 	}
-
-//	private OnIOExceptionListener ioExceptionListener;
-//
-//	public void setOnIOExceptionListener(OnIOExceptionListener l) {
-//		this.ioExceptionListener = l;
-//	}
-//
-//	private OnParserExceptionListener parserExceptionListener;
-//
-//	public void setOnParserExceptionListener(OnParserExceptionListener l) {
-//		this.parserExceptionListener = l;
-//	}
 
 	private OnNetworkUnavailableListener networkUnavailableListener;
 
@@ -98,13 +81,8 @@ import java.io.IOException;
 		this.context = context;
 	}
 
-	/**
-	 * A convenience method used to hide the poor API of the internal execute
-	 * method that can't be overridden.
-	 */
-	@SuppressWarnings("unchecked")
 	public void execute() {
-		execute(null, null);
+        super.execute();
 	}
 
 	/**
@@ -124,21 +102,7 @@ import java.io.IOException;
 	 * @throws ParserException
 	 * @throws Exception
 	 */
-	abstract protected Result loadDataFromNetwork() throws IOException,
-			ParserException, Exception;
-
-	/**
-	 * This method runs on the UI Thread. Use this hook for what happens when
-	 * the loadDataFromNetwork method returns successfully.
-	 * 
-	 * @param result
-	 *            The result from loadDataFromNetwork
-	 */
-	protected void onPostSuccess(Result result) {
-	}
-
-	protected void onPostFault(Exception e) {
-	}
+	abstract protected Result loadDataFromNetwork() throws Exception;
 
 	@Override
 	protected void onPreExecute() {
@@ -191,22 +155,18 @@ import java.io.IOException;
 		}
 
 		if (parserException != null) {
-			onPostFault(parserException);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(parserException);
 		} else if (ioException != null) {
-			onPostFault(ioException);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(ioException);
 		} else if (exception != null) {
-			onPostFault(exception);
 			if (genericExceptionListener != null)
 				genericExceptionListener.onException(exception);
 		}
 
 		// SUCCESS!
 		else {
-			onPostSuccess(result);
 			if (completeListener != null) {
 				completeListener.onComplete(result);
 			}

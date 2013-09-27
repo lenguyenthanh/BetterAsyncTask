@@ -8,11 +8,6 @@ package com.android.tekreds.network.exception;
 
  public class ClientProtocolException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3030593935402252775L;
-
 	public ClientProtocolException() {
 		super();
 	}

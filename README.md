@@ -1,5 +1,7 @@
-BetterAsyncTask
-================
+## Deprecated
+This project is deprecated as we shouldn't use AyncTask for Network call anymore and there are a lot of better libraries for network out there.
+
+## BetterAsyncTask
 
  * An easy, light weight android network library
 
